@@ -15,7 +15,7 @@ Cloning Youtube with Vanilla and NodeJS
 - [ ] Video Dtail
 - [ ] Edit Video
 
-## Commit message roll
+## Commit message rule
 
 - [FIX] 올바르지 않은 동작을 고친 경우
 - [ADD] 코드나 테스트, 예제, 문서 등의 추가
