@@ -1,8 +1,9 @@
 header {
-  background-color: $red;
-  margin-bottom: 50px;
+  // padding: 10px;
+  background-color: white;
+  margin-bottom: 30px;
   .header__wrapper {
-    padding: 5px 0px;
+    padding: 15px 0px 15px 0px;
     width: 100%;
     margin: 0 auto;
     max-width: 1200px;
@@ -11,8 +12,18 @@ header {
     align-items: center;
     .header__column {
       i {
-        color: white;
+        color: $red;
         font-size: 30px;
+      }
+      &:first-child {
+        a {
+          display: flex;
+          align-items: center;
+          span {
+            margin-left: 5px;
+            font-size: 20px;
+          }
+        }
       }
       &:nth-child(2) {
         width: 100%;
@@ -23,7 +34,7 @@ header {
       }
       ul {
         display: flex;
-        color: white;
+        color: black;
         font-weight: 600;
         text-transform: uppercase;
         li:not(:last-child) {
@@ -37,6 +48,7 @@ header {
           width: 100%;
           border-radius: 5px;
           font-size: 14px;
+          border: 1px solid $dark-grey;
           color: $black;
           font-weight: 600;
           max-width: none;
