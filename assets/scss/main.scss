@@ -19,24 +19,22 @@ main {
 }
 
 button,
-input {
-  input:not([type="file"]),
-  textarea,
-  .fileUpload {
-    padding: 7px 10px;
-    width: 100%;
-    border: none;
-    border-radius: 5px;
-    font-size: 14px;
-    color: $black;
-    font-weight: 600;
-    background-color: white;
-    max-width: 320px;
-    resize: none;
-    &::placeholder {
-      font-weight: 300;
-      color: rgba(0, 0, 0, 0.7);
-    }
+input:not([type="file"]),
+textarea,
+.fileUpload {
+  padding: 7px 10px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  color: $black;
+  font-weight: 600;
+  background-color: white;
+  max-width: 320px;
+  resize: none;
+  &::placeholder {
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.7);
   }
 }
 
