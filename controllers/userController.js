@@ -47,8 +47,8 @@ export const githubLoginCallback = async (_, __, profile, cb) => {
     const user = await User.findOne({ email });
     if (user) {
       user.githubId = id;
-      user.avatarUrl = avatarUrl;
-      user.name = name;
+      // user.avatarUrl = avatarUrl;
+      // user.name = name;
       user.save();
       return cb(null, user);
     }
@@ -106,10 +106,6 @@ export const getMe = (req, res) => {
   res.render("userDetail", { pageTitle: "User Detail", user: req.user });
 };
 
-export const changePassword = (req, res) =>
-  res.render("changePassword", { pageTitle: "Change Password" });
-export const getEditProfile = (req, res) =>
-  res.render("editProfile", { pageTitle: "Edit Profile" });
 export const userDetail = async (req, res) => {
   const {
     prams: { id },
@@ -121,3 +117,26 @@ export const userDetail = async (req, res) => {
     res.redirect(routes.home);
   }
 };
+
+export const getEditProfile = (req, res) =>
+  res.render("editProfile", { pageTitle: "Edit Profile" });
+
+export const postEditProfile = async (req, res) => {
+  const {
+    body: { name, email },
+    file,
+  } = req;
+  try {
+    await User.findByIdAndUpdate(req.user.id, {
+      name,
+      email,
+      avatarUrl: file ? file.path : req.user.avatarUrl,
+    });
+    res.redirect(routes.me);
+  } catch (error) {
+    res.render("editProfile", { pageTitle: "Edit Profile" });
+  }
+};
+
+export const changePassword = (req, res) =>
+  res.render("changePassword", { pageTitle: "Change Password" });
