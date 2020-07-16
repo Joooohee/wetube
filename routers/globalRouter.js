@@ -13,6 +13,7 @@ import {
   getMe,
   facebookLogin,
   postFacebookLogin,
+  userDetail,
 } from "../controllers/userController";
 import { onlyPublic, onlyPrivate } from "../middlewares";
 
@@ -34,6 +35,7 @@ globalRouter.get(
 );
 
 globalRouter.get(routes.me, getMe);
+// globalRouter.get(routes.userDetail, userDetail);
 
 globalRouter.get(routes.facebook, facebookLogin);
 globalRouter.get(
