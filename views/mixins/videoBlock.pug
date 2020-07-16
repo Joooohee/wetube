@@ -1,7 +1,7 @@
 //- mixin은 웹사이트에서 자주 반복되는 html 코드를 담고있다.
 mixin videoBlock(video = {})
     .videoBlock
-        a(href=routes.videoDetail(video.id))
+        a(href=`${routes.videoDetail(video.id)}`)
             video.videoBlock__thumbnail(src=video.videoFile, controls=false)
             h4.videoBlock__title=video.title
             if video.views === 1
