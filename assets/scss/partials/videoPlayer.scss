@@ -40,5 +40,15 @@
       font-size: 25px;
       cursor: pointer;
     }
+    .videoPlayer__volume {
+      position: absolute;
+      padding: 0;
+      opacity: 1;
+      top: -60px;
+      left: -25px;
+      transform: rotate(-90deg);
+      z-index: 10;
+      width: 80px;
+    }
   }
 }
