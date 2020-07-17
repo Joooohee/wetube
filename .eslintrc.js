@@ -4,4 +4,7 @@ module.exports = {
     "no-console": "off",
     // "prettier/prettier": "off",
   },
+  env: {
+    browser: true,
+  },
 };
