@@ -38,6 +38,18 @@ const config = {
           },
         ]),
       },
+      // {
+      //   test: /\.(jpg|jpeg|png|mp4)$/,
+      //   use: [
+      //     {
+      //       loader: "file-loader",
+      //       options: {
+      //         publicPath: "./static/",
+      //         name: "[name].[ext]",
+      //       },
+      //     },
+      //   ],
+      // },
     ],
   },
   output: {

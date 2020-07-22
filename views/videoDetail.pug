@@ -29,7 +29,10 @@ block content
                     |댓글  
                     span#jsCommentNumber=video.comments.length + "개"
             form.add__comment#jsAddComment
-                img.comment-avatar(src=`http://localhost:4000/${user.avatarUrl}`)
+                if user
+                    img.comment-avatar(src=`http://localhost:4000/${user.avatarUrl}`)
+                else
+                    img.comment-avatar(src="http://localhost:4000/lib/images/bear.png")
                 input(type="text", placeholder="공개 댓글 추가...", name="comment")
             ul.video__commnets-list#jsCommentList
                 each comment in video.comments.reverse()
