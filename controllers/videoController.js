@@ -152,3 +152,19 @@ export const postAddComment = async (req, res) => {
     res.end();
   }
 };
+
+// Delete Comment
+
+export const postDeleteComment = async (req, res) => {
+  const {
+    body: { commentId: id },
+  } = req;
+  try {
+    await Comment.findOneAndDelete({ _id: id });
+    res.status(200);
+  } catch (error) {
+    res.status(400).json({ resultCode: "E", resultData: { error } });
+  } finally {
+    res.end();
+  }
+};

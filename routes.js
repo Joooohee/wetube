@@ -82,6 +82,7 @@ const routes = {
   api: API,
   register_view: REGISTER_VIEW,
   addComment: ADD_COMMENT,
+  deleteComment: DELETE_COMMENT,
 };
 
 export default routes;

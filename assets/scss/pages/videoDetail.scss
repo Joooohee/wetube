@@ -96,7 +96,7 @@
         span {
           cursor: pointer;
         }
-        span:first-child {
+        span:not(:last-child) {
           margin-right: 15px;
         }
       }

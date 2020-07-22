@@ -36,7 +36,7 @@ block content
                 input(type="text", placeholder="공개 댓글 추가...", name="comment")
             ul.video__commnets-list#jsCommentList
                 each comment in video.comments.reverse()
-                    li
+                    li(id=comment.id)
                         img.comment-avatar(src=`http://localhost:4000/${comment.creator.avatarUrl}`)
                         .comment-list__content
                             .commnets-list__info
@@ -49,6 +49,9 @@ block content
                                 span
                                     i.fas.fa-heart
                                 span 답글
+                                if loggedUser && comment.creator.id === loggedUser.id
+                                    span.jsDeleteComment 삭제
+                                    //- span=comment.id
 
 
                         

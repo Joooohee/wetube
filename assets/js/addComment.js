@@ -85,9 +85,6 @@ const sendComment = async (comment) => {
       addComment(avatarUrl, comment, name);
     })
     .catch((err) => console.log(err));
-  // if (response.status === 200) {
-  //   // addComment(comment);
-  // }
 };
 
 function handleSubmit(event) {
