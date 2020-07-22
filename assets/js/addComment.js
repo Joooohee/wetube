@@ -38,7 +38,7 @@ const addComment = (avatarUrl, comment, name) => {
 
   spanName.innerHTML = `${name}&nbsp;&nbsp;`;
   spanCreateAt.innerHTML = formatDate(new Date());
-  spanCreateAt.id = "jsCreateAt";
+  spanCreateAt.className = "jsCreateAt";
 
   spanText.innerHTML = comment;
   spanIcon.innerHTML = "<i class='fas fa-heart'></>";

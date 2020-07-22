@@ -2,13 +2,19 @@ import axios from "axios";
 
 const deleteComment = document.querySelectorAll(".jsDeleteComment");
 const commentList = document.getElementById("jsCommentList");
+const commentNumber = document.getElementById("jsCommentNumber");
 
-const addComment = (commentId) => {
-  const removeComment = document.getElementById(commentId);
-  commentList.removeChild(removeComment);
+const decreaseNumber = () => {
+  commentNumber.innerHTML = parseInt(commentNumber.innerHTML, 10) - 1;
 };
 
-const removeComment = async (commentId) => {
+const removeComment = (commentId) => {
+  const comment = document.getElementById(commentId);
+  commentList.removeChild(comment);
+  decreaseNumber();
+};
+
+const sendComment = async (commentId) => {
   const videoId = window.location.href.split("/videos/")[1];
   await axios({
     url: `/api/${videoId}/comment/delete`,
@@ -18,7 +24,7 @@ const removeComment = async (commentId) => {
     },
   })
     .then((req) => {
-      addComment(commentId);
+      removeComment(commentId);
     })
     .catch((err) => console.log(err));
 };
@@ -26,7 +32,7 @@ const removeComment = async (commentId) => {
 function handelClick(event) {
   event.preventDefault();
   const commentId = event.target.closest("li").id;
-  removeComment(commentId);
+  sendComment(commentId);
 }
 
 function init() {

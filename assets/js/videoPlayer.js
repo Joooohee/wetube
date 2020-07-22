@@ -7,7 +7,7 @@ const currentTime = document.getElementById("currentTime");
 const totalTime = document.getElementById("totalTime");
 const volumeRnage = document.getElementById("jsVolume");
 
-const createAt = document.querySelectorAll("#jsCreateAt");
+const createAt = document.querySelectorAll(".jsCreateAt");
 
 const registerView = () => {
   const videoId = window.location.href.split("/videos/")[1];
