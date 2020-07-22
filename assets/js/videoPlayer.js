@@ -9,6 +9,8 @@ const currentTime = document.getElementById("currentTime");
 const totalTime = document.getElementById("totalTime");
 const volumeRnage = document.getElementById("jsVolume");
 
+const createAt = document.querySelectorAll("#jsCreateAt");
+
 const registerView = () => {
   const videoId = window.location.href.split("/videos/")[1];
   fetch(`/api/${videoId}/view`, { method: "post" });
@@ -117,6 +119,18 @@ function handleDrag(event) {
   }
 }
 
+function formatDate2(date) {
+  const d = new Date(date);
+  let month = "" + (d.getMonth() + 1);
+  let day = "" + d.getDate();
+  const year = d.getFullYear();
+
+  if (month.length < 2) month = "0" + month;
+  if (day.length < 2) day = "0" + day;
+
+  return [year, month, day].join("-");
+}
+
 function init() {
   videoPlayer.volume = 0.5;
   playBtn.addEventListener("click", handlePlayClick);
@@ -125,6 +139,10 @@ function init() {
   videoPlayer.addEventListener("loadedmetadata", setTotalTime);
   videoPlayer.addEventListener("ended", handleEnded);
   volumeRnage.addEventListener("input", handleDrag);
+
+  for (let i = 0; i < createAt.length; i++) {
+    createAt[i].innerHTML = formatDate2(createAt[i].innerHTML);
+  }
 }
 
 if (videoContainer) {

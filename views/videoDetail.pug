@@ -13,24 +13,40 @@ block content
             h5.video__title=video.title
             p.video__description=video.description
             if video.views === 1
-                span.video__views 1 view
+                span.video__views 조회수 1
             else 
-                span.video__views #{video.views} views
+                span.video__views 조회수 #{video.views}
             .video__author
                 |Uploaded by 
                 a(href=routes.userDetail(video.creator.id))=video.creator.name
         .video__comments
             if video.comments.length === 1
                 span.video__comment-number
-                    span#jsCommentNumber 1 
-                    |  comment
+                    span#jsCommentNumber 댓글
+                    |  1개
             else
                 span.video__comment-number
-                    span#jsCommentNumber=video.comments.length
-                    |  comments
+                    |댓글  
+                    span#jsCommentNumber=video.comments.length + "개"
             form.add__comment#jsAddComment
-                input(type="text", placeholder="Add a comment", name="comment")
+                img.comment-avatar(src=`http://localhost:4000/${user.avatarUrl}`)
+                input(type="text", placeholder="공개 댓글 추가...", name="comment")
             ul.video__commnets-list#jsCommentList
                 each comment in video.comments.reverse()
                     li
-                        span=comment.text
+                        img.comment-avatar(src=`http://localhost:4000/${comment.creator.avatarUrl}`)
+                        .comment-list__content
+                            .commnets-list__info
+                                span=comment.creator.name 
+                                |&nbsp;&nbsp;  
+                                span#jsCreateAt=comment.createAt
+                            .commnets-list__text    
+                                span=comment.text
+                            .commnets-list__reply
+                                span
+                                    i.fas.fa-heart
+                                span 답글
+
+
+                        
+                        

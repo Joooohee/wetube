@@ -19,16 +19,27 @@ const addComment = (comment) => {
 
 const sendComment = async (comment) => {
   const videoId = window.location.href.split("/videos/")[1];
-  const response = await axios({
+  // const response =
+  await axios({
     url: `/api/${videoId}/comment`,
     method: "POST",
     data: {
       comment,
     },
-  });
-  if (response.status === 200) {
-    addComment(comment);
-  }
+  })
+    .then((req) => {
+      const {
+        data: {
+          resultCode,
+          resultData: { avatarUrl, name },
+        },
+      } = req;
+      console.log(resultCode, avatarUrl, comment, name);
+    })
+    .catch((err) => console.log(err));
+  // if (response.status === 200) {
+  //   // addComment(comment);
+  // }
 };
 
 function handleSubmit(event) {

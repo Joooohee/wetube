@@ -6,6 +6,8 @@
     width: 100%;
     // max-width: 850px;
     margin-top: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1.4px solid $dark-grey;
     button {
       width: 100px;
       margin-bottom: 25px;
@@ -23,7 +25,7 @@
     }
     .video__title {
       font-size: 22px;
-      font-weight: 300;
+      font-weight: 400;
     }
     .video__views {
       font-size: 14px;
@@ -33,6 +35,8 @@
     }
   }
   .video__comments {
+    // align-self: flex-start;
+    width: 100%;
     margin-top: 25px;
     .video__comment-number {
       font-size: 18px;
@@ -41,21 +45,68 @@
   .add__comment {
     margin-top: 25px;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     input {
+      background: none;
       width: 100%;
+      padding-bottom: 10px;
+      border-bottom: 1px solid $dark-grey;
+    }
+    input:focus {
+      border-bottom: 2px solid black;
     }
   }
   .video__commnets-list {
     margin-top: 50px;
     li {
-      background-color: #3498db;
-      color: white;
-      padding: 15px 30px;
-      border-radius: 20px;
-      border-bottom-left-radius: 0px;
       &:not(:last-child) {
-        margin-bottom: 50px;
+        margin-bottom: 30px;
+      }
+      display: flex;
+      align-items: center;
+    }
+    .comment-list__content {
+      div {
+        &:not(:last-child) {
+          margin-bottom: 12px;
+        }
+      }
+      .commnets-list__info {
+        display: flex;
+        margin-bottom: 8px;
+        font-size: 15px;
+        align-items: center;
+        span:first-child {
+          font-weight: 600;
+        }
+        span:last-child {
+          font-size: 12px;
+          color: #7e7e7e;
+        }
+      }
+      .commnets-list__text {
+        font-size: 15px;
+      }
+      .commnets-list__reply {
+        display: flex;
+        font-size: 15px;
+        color: #7e7e7e;
+        span {
+          cursor: pointer;
+        }
+        span:first-child {
+          margin-right: 15px;
+        }
       }
     }
+  }
+  .comment-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+    align-self: flex-start;
   }
 }
