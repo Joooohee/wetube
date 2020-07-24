@@ -29,7 +29,8 @@ const sendComment = async (commentId) => {
     .catch((err) => console.log(err));
 };
 
-function handelClick(event) {
+// eslint-disable-next-line import/prefer-default-export
+export function handelDltClick(event) {
   event.preventDefault();
   const commentId = event.target.closest("li").id;
   sendComment(commentId);
@@ -37,7 +38,7 @@ function handelClick(event) {
 
 function init() {
   for (let i = 0; i < deleteComment.length; i++) {
-    deleteComment[i].addEventListener("click", handelClick);
+    deleteComment[i].addEventListener("click", handelDltClick);
   }
 }
 

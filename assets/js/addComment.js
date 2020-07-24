@@ -1,4 +1,6 @@
 import axios from "axios";
+import { commonFormatDate } from "./commonFN";
+import { handelDltClick } from "./deleteComment";
 
 const addCommentForm = document.getElementById("jsAddComment");
 const commentList = document.getElementById("jsCommentList");
@@ -8,19 +10,7 @@ const increaseNumber = () => {
   commentNumber.innerHTML = parseInt(commentNumber.innerHTML, 10) + 1;
 };
 
-function formatDate(date) {
-  const d = new Date(date);
-  let month = "" + (d.getMonth() + 1);
-  let day = "" + d.getDate();
-  const year = d.getFullYear();
-
-  if (month.length < 2) month = "0" + month;
-  if (day.length < 2) day = "0" + day;
-
-  return [year, month, day].join("-");
-}
-
-const addComment = (avatarUrl, comment, name) => {
+const addComment = (avatarUrl, comment, name, id) => {
   const li = document.createElement("li");
   const imgAvatar = document.createElement("img");
   const divContent = document.createElement("div");
@@ -38,7 +28,7 @@ const addComment = (avatarUrl, comment, name) => {
   imgAvatar.className = "comment-avatar";
 
   spanName.innerHTML = `${name}&nbsp;&nbsp;`;
-  spanCreateAt.innerHTML = formatDate(new Date());
+  spanCreateAt.innerHTML = commonFormatDate(new Date());
   spanCreateAt.className = "jsCreateAt";
 
   spanText.innerHTML = comment;
@@ -46,6 +36,7 @@ const addComment = (avatarUrl, comment, name) => {
   spanTextReply.innerHTML = "답글";
   spanTextDelete.innerHTML = "삭제";
   spanTextDelete.className = "jsDeleteComment";
+  spanTextDelete.addEventListener("click", handelDltClick);
 
   divInfo.className = "commnets-list__info";
   divInfo.appendChild(spanName);
@@ -66,6 +57,7 @@ const addComment = (avatarUrl, comment, name) => {
 
   li.appendChild(imgAvatar);
   li.appendChild(divContent);
+  li.id = id;
 
   commentList.prepend(li);
   increaseNumber();
@@ -83,10 +75,10 @@ const sendComment = async (comment) => {
     .then((req) => {
       const {
         data: {
-          resultData: { avatarUrl, name },
+          resultData: { avatarUrl, name, id },
         },
       } = req;
-      addComment(avatarUrl, comment, name);
+      addComment(avatarUrl, comment, name, id);
     })
     .catch((err) => console.log(err));
 };

@@ -70,10 +70,8 @@ export const getEditVideo = async (req, res) => {
     const video = await Video.findById(id);
     console.log(video.creator, req.user.id);
     if (video.creator !== req.user.id) {
-      console.log("error");
       throw Error();
     } else {
-      console.log("error");
       res.render("editVideo", { pageTitle: `Edit ${video.title}`, video });
     }
   } catch (error) {
@@ -148,7 +146,12 @@ export const postAddComment = async (req, res) => {
     video.save();
     res.json({
       resultCode: "S",
-      resultData: { name: user.name, avatarUrl: user.avatarUrl, comment },
+      resultData: {
+        name: user.name,
+        avatarUrl: user.avatarUrl,
+        comment,
+        id: newComment.id,
+      },
     });
   } catch (error) {
     res.status(400).json({ resultCode: "E", resultData: { error } });
