@@ -42,4 +42,6 @@ function init() {
   }
 }
 
-init();
+if (deleteComment) {
+  init();
+}

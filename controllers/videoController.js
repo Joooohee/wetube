@@ -1,7 +1,7 @@
 import routes from "../routes";
 import Video from "../models/Video";
 import Comment from "../models/Comment";
-import User from "../models/User";
+import Reply from "../models/Reply";
 
 export const home = async (req, res) => {
   try {
@@ -54,7 +54,11 @@ export const videoDetail = async (req, res) => {
   try {
     const video = await Video.findById(id)
       .populate("creator")
-      .populate({ path: "comments", populate: { path: "creator" } });
+      .populate({
+        path: "comments",
+        populate: [{ path: "creator" }, { path: "replies" }],
+      });
+    console.log(video.comments[2].replies);
     res.render("videoDetail", { pageTitle: video.title, video, user });
   } catch (error) {
     console.log(error);
@@ -171,6 +175,29 @@ export const postDeleteComment = async (req, res) => {
     res.status(200);
   } catch (error) {
     res.status(400).json({ resultCode: "E", resultData: { error } });
+  } finally {
+    res.end();
+  }
+};
+
+// Add Reply
+
+export const postAddReply = async (req, res) => {
+  const {
+    // params: { id },
+    body: { commentId: id, reply },
+    user,
+  } = req;
+  try {
+    const comment = await Comment.findById(id);
+    const newReply = await Reply.create({
+      text: reply,
+      creator: user.id,
+    });
+    comment.replies.push(newReply.id);
+    comment.save();
+  } catch (error) {
+    res.status(400);
   } finally {
     res.end();
   }

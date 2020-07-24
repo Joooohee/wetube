@@ -3,3 +3,4 @@ import "./videoPlayer";
 import "./videoRecorder";
 import "./deleteComment";
 import "./addComment";
+import "./addReply";

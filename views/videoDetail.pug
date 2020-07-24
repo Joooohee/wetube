@@ -45,13 +45,26 @@ block content
                                 span.jsCreateAt=comment.createAt
                             .commnets-list__text    
                                 span=comment.text
-                            .commnets-list__reply
-                                span
-                                    i.fas.fa-heart
-                                span 답글
-                                if loggedUser && comment.creator.id === loggedUser.id
-                                    span.jsDeleteComment 삭제
-                                    //- span=comment.id
+                            .commnets-list__bottom
+                                .bottom__atc
+                                    span
+                                        i.fas.fa-heart
+                                    span.jsReplyButton 답글
+                                    if loggedUser && comment.creator.id === loggedUser.id
+                                        span.jsDeleteComment 삭제
+                                .bottom__reply.display-none
+                                    form.bottom__reply-form.jsAddReply
+                                        if user
+                                            img.reply-avatar(src=`http://localhost:4000/${user.avatarUrl}`)
+                                        else
+                                            img.reply-avatar(src="http://localhost:4000/lib/images/bear.png")
+                                        input(type="text", placeholder="공개 답글 추가...", name="comment")
+                                    ul.bottom__reply-text
+                                        each reply in comment.replies 
+                                            li 
+                                                span=reply.text
+                                 
+                        
 
 
                         

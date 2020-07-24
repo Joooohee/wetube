@@ -4,7 +4,6 @@
   align-items: center;
   .video__info {
     width: 100%;
-    // max-width: 850px;
     margin-top: 25px;
     padding-bottom: 25px;
     border-bottom: 1.4px solid $dark-grey;
@@ -35,7 +34,6 @@
     }
   }
   .video__comments {
-    // align-self: flex-start;
     width: 100%;
     margin-top: 25px;
     .video__comment-number {
@@ -48,26 +46,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    input {
-      background: none;
-      width: 100%;
-      padding-bottom: 10px;
-      border-bottom: 1px solid $dark-grey;
-    }
-    input:focus {
-      border-bottom: 2px solid black;
-    }
   }
   .video__commnets-list {
     margin-top: 50px;
     li {
       &:not(:last-child) {
-        margin-bottom: 30px;
+        margin-bottom: 25px;
       }
       display: flex;
       align-items: center;
     }
     .comment-list__content {
+      width: 100%;
       div {
         &:not(:last-child) {
           margin-bottom: 12px;
@@ -89,15 +79,43 @@
       .commnets-list__text {
         font-size: 15px;
       }
-      .commnets-list__reply {
-        display: flex;
-        font-size: 15px;
-        color: #7e7e7e;
-        span {
-          cursor: pointer;
+      .commnets-list__bottom {
+        .bottom__atc {
+          display: flex;
+          font-size: 15px;
+          color: #7e7e7e;
+          span {
+            cursor: pointer;
+          }
+          span:not(:last-child) {
+            margin-right: 15px;
+          }
         }
-        span:not(:last-child) {
-          margin-right: 15px;
+        .bottom__reply {
+          .bottom__reply-form {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .reply-avatar {
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+              margin-right: 10px;
+            }
+          }
+          .bottom__reply-text {
+            margin-left: 40px;
+            li {
+              display: block;
+              margin-top: 10px;
+              margin-bottom: 0;
+              background: #f4d4d7;
+              padding: 15px 20px;
+              border-radius: 20px;
+              border-top-left-radius: 0;
+            }
+          }
         }
       }
     }
@@ -108,5 +126,17 @@
     border-radius: 50%;
     margin-right: 10px;
     align-self: flex-start;
+  }
+  input {
+    background: none;
+    width: 100%;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $dark-grey;
+  }
+  input:focus {
+    border-bottom: 2px solid black;
+  }
+  .display-none {
+    display: none;
   }
 }

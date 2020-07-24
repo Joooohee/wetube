@@ -34,6 +34,7 @@ const API = "/api";
 const REGISTER_VIEW = "/:id/view";
 const ADD_COMMENT = "/:id/comment";
 const DELETE_COMMENT = "/:id/comment/delete";
+const ADD_REPLY = "/:id/reply";
 
 const routes = {
   home: HOME,
@@ -83,6 +84,7 @@ const routes = {
   register_view: REGISTER_VIEW,
   addComment: ADD_COMMENT,
   deleteComment: DELETE_COMMENT,
+  addReply: ADD_REPLY,
 };
 
 export default routes;
