@@ -29,12 +29,15 @@ function handleSubmit(event) {
   replyInput.value = "";
 }
 
-function showReply(event) {
-  const repleBlock = event.target.closest(".bottom__atc").nextSibling;
+export function showReply(event) {
+  const button = event.target;
+  const repleBlock = button.closest(".bottom__atc").nextSibling;
   if (repleBlock.classList.value.indexOf("display-none") > 0) {
     repleBlock.classList.remove("display-none");
+    button.innerHTML = "닫기";
   } else {
     repleBlock.classList.add("display-none");
+    button.innerHTML = "답글";
   }
 }
 

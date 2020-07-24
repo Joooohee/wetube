@@ -58,7 +58,7 @@ block content
                                             img.reply-avatar(src=`http://localhost:4000/${user.avatarUrl}`)
                                         else
                                             img.reply-avatar(src="http://localhost:4000/lib/images/bear.png")
-                                        input(type="text", placeholder="공개 답글 추가...", name="comment")
+                                        input(type="text", placeholder="공개 답글 추가...", name="reply")
                                     ul.bottom__reply-text
                                         each reply in comment.replies 
                                             li 

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { commonFormatDate } from "./commonFN";
 import { handelDltClick } from "./deleteComment";
+import { showReply } from "./addReply";
 
 const addCommentForm = document.getElementById("jsAddComment");
 const commentList = document.getElementById("jsCommentList");
@@ -16,6 +17,8 @@ const addComment = (avatarUrl, comment, name, id) => {
   const divContent = document.createElement("div");
   const divInfo = document.createElement("div");
   const divText = document.createElement("div");
+  const divBottom = document.createElement("div");
+  const divAtc = document.createElement("div");
   const divReply = document.createElement("div");
   const spanName = document.createElement("span");
   const spanCreateAt = document.createElement("span");
@@ -23,6 +26,10 @@ const addComment = (avatarUrl, comment, name, id) => {
   const spanIcon = document.createElement("span");
   const spanTextReply = document.createElement("span");
   const spanTextDelete = document.createElement("span");
+  const formReply = document.createElement("form");
+  const replyAvatar = document.createElement("img");
+  const inputReply = document.createElement("input");
+  const ulReply = document.createElement("ul");
 
   imgAvatar.src = `http://localhost:4000/${avatarUrl}`;
   imgAvatar.className = "comment-avatar";
@@ -34,6 +41,7 @@ const addComment = (avatarUrl, comment, name, id) => {
   spanText.innerHTML = comment;
   spanIcon.innerHTML = "<i class='fas fa-heart'></>";
   spanTextReply.innerHTML = "답글";
+  spanTextReply.addEventListener("click", showReply);
   spanTextDelete.innerHTML = "삭제";
   spanTextDelete.className = "jsDeleteComment";
   spanTextDelete.addEventListener("click", handelDltClick);
@@ -45,15 +53,37 @@ const addComment = (avatarUrl, comment, name, id) => {
   divText.className = "commnets-list__text";
   divText.appendChild(spanText);
 
-  divReply.className = "commnets-list__reply";
-  divReply.appendChild(spanIcon);
-  divReply.appendChild(spanTextReply);
-  divReply.appendChild(spanTextDelete);
+  divAtc.className = "bottom__atc";
+  divAtc.appendChild(spanIcon);
+  divAtc.appendChild(spanTextReply);
+  divAtc.appendChild(spanTextDelete);
+
+  replyAvatar.src = `http://localhost:4000/${avatarUrl}`;
+  replyAvatar.className = "reply-avatar";
+
+  inputReply.type = "text";
+  inputReply.placeholder = "공개 답글 추가...";
+
+  formReply.className = "bottom__reply-form";
+  formReply.classList.add("jsAddReply");
+  formReply.appendChild(replyAvatar);
+  formReply.appendChild(inputReply);
+
+  ulReply.className = "bottom__reply-text";
+
+  divReply.className = "bottom__reply";
+  divReply.classList.add("display-none");
+  divReply.appendChild(formReply);
+  divReply.appendChild(ulReply);
+
+  divBottom.className = "commnets-list__bottom";
+  divBottom.appendChild(divAtc);
+  divBottom.appendChild(divReply);
 
   divContent.className = "comment-list__content";
   divContent.appendChild(divInfo);
   divContent.appendChild(divText);
-  divContent.appendChild(divReply);
+  divContent.appendChild(divBottom);
 
   li.appendChild(imgAvatar);
   li.appendChild(divContent);
