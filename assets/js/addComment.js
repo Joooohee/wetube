@@ -32,6 +32,7 @@ const addComment = (avatarUrl, comment, name) => {
   const spanText = document.createElement("span");
   const spanIcon = document.createElement("span");
   const spanTextReply = document.createElement("span");
+  const spanTextDelete = document.createElement("span");
 
   imgAvatar.src = `http://localhost:4000/${avatarUrl}`;
   imgAvatar.className = "comment-avatar";
@@ -43,6 +44,8 @@ const addComment = (avatarUrl, comment, name) => {
   spanText.innerHTML = comment;
   spanIcon.innerHTML = "<i class='fas fa-heart'></>";
   spanTextReply.innerHTML = "답글";
+  spanTextDelete.innerHTML = "삭제";
+  spanTextDelete.className = "jsDeleteComment";
 
   divInfo.className = "commnets-list__info";
   divInfo.appendChild(spanName);
@@ -54,6 +57,7 @@ const addComment = (avatarUrl, comment, name) => {
   divReply.className = "commnets-list__reply";
   divReply.appendChild(spanIcon);
   divReply.appendChild(spanTextReply);
+  divReply.appendChild(spanTextDelete);
 
   divContent.className = "comment-list__content";
   divContent.appendChild(divInfo);
