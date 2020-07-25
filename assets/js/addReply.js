@@ -24,7 +24,6 @@ function handleSubmit(event) {
   const replyInput = event.target.querySelector("input");
   const reply = replyInput.value;
   const commentId = event.target.closest("li").id;
-  console.log(reply, commentId);
   sendReply(commentId, reply);
   replyInput.value = "";
 }

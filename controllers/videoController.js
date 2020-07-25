@@ -201,3 +201,28 @@ export const postAddReply = async (req, res) => {
     res.end();
   }
 };
+
+// Like comment
+
+export const postLikeComment = async (req, res) => {
+  const {
+    body: { commentId: id },
+    user,
+  } = req;
+  try {
+    const comment = await Comment.findById(id);
+    const targetIndex = comment.likes.indexOf(user.id);
+    if (targetIndex > -1) {
+      comment.likes.splice(targetIndex, 1);
+    } else {
+      comment.likes.push(user.id);
+    }
+
+    comment.save();
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};

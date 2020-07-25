@@ -46,9 +46,13 @@ block content
                             .commnets-list__text    
                                 span=comment.text
                             .commnets-list__bottom
-                                .bottom__atc
-                                    span
-                                        i.fas.fa-heart
+                                .bottom__atc                           
+                                    if loggedUser && comment.likes.indexOf(loggedUser.id) > -1
+                                        span
+                                            i.fas.fa-heart.jsLike
+                                    else
+                                        span
+                                            i.far.fa-heart.jsLike
                                     span.jsReplyButton 답글
                                     if loggedUser && comment.creator.id === loggedUser.id
                                         span.jsDeleteComment 삭제

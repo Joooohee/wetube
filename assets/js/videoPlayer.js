@@ -8,6 +8,7 @@ const fullScrnBtn = document.getElementById("jsfullScreen");
 const currentTime = document.getElementById("currentTime");
 const totalTime = document.getElementById("totalTime");
 const volumeRnage = document.getElementById("jsVolume");
+const sliderRange = document.getElementById("jsSlider");
 const createAt = document.querySelectorAll(".jsCreateAt");
 
 const registerView = () => {
@@ -92,10 +93,16 @@ function getCurrentTime() {
   currentTime.innerHTML = formatDate(Math.floor(videoPlayer.currentTime));
 }
 
+function getSliderValue() {
+  sliderRange.value = videoPlayer.currentTime.toFixed(1);
+}
+
 function setTotalTime() {
   const totalTimeString = formatDate(videoPlayer.duration);
   totalTime.innerHTML = totalTimeString;
+  sliderRange.max = Math.floor(videoPlayer.duration);
   setInterval(getCurrentTime, 1000);
+  setInterval(getSliderValue, 100);
 }
 
 function handleEnded() {
@@ -104,7 +111,7 @@ function handleEnded() {
   playBtn.innerHTML = "<i class='fas fa-play'></i>";
 }
 
-function handleDrag(event) {
+function handleVolumDrag(event) {
   const {
     target: { value },
   } = event;
@@ -118,14 +125,25 @@ function handleDrag(event) {
   }
 }
 
+function handleSliderDrag(event) {
+  const {
+    target: { value },
+  } = event;
+  console.log(value);
+  videoPlayer.currentTime = value;
+  currentTime.innerHTML = formatDate(Math.floor(videoPlayer.currentTime));
+}
+
 function init() {
   videoPlayer.volume = 0.5;
+
   playBtn.addEventListener("click", handlePlayClick);
   volumeBtn.addEventListener("click", handleVolumeClick);
   fullScrnBtn.addEventListener("click", goFullScreen);
   videoPlayer.addEventListener("loadedmetadata", setTotalTime);
   videoPlayer.addEventListener("ended", handleEnded);
-  volumeRnage.addEventListener("input", handleDrag);
+  volumeRnage.addEventListener("input", handleVolumDrag);
+  sliderRange.addEventListener("input", handleSliderDrag);
 
   for (let i = 0; i < createAt.length; i++) {
     createAt[i].innerHTML = commonFormatDate(createAt[i].innerHTML);

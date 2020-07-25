@@ -3,7 +3,7 @@ mixin videoPlayer(video = {})
         video(src=`/${video.src}`) 
         .videoPlayer__controls
             .videoPlayer__slider
-                input.videoPlayer__slider#jsSlider(type="range", value="0")
+                input#jsSlider(type="range", min="0", step="0.1", value="0")
             .videoPlayer__container
                 .videoPlayer__column
                     span#jsPlayButton
