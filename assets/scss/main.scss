@@ -52,3 +52,51 @@ button,
 input[type="submit"] {
   cursor: pointer;
 }
+
+.container {
+  position: relative;
+  .private-notification__modal {
+    position: absolute;
+    background: #2c2c2c48;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 10;
+
+    .modal__container {
+      position: fixed;
+      width: 350px;
+      height: 150px;
+      background: #ffffff;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+        0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 5px;
+      span {
+        font-size: 20px;
+        font-weight: 700;
+      }
+      p {
+        font-size: 16px;
+      }
+      .buttons {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        button {
+          width: 45%;
+        }
+        button:first-child {
+          background: #70c8d8;
+        }
+      }
+    }
+  }
+}
