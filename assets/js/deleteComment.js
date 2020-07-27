@@ -23,7 +23,7 @@ const sendComment = async (commentId) => {
       commentId,
     },
   })
-    .then((req) => {
+    .then(() => {
       removeComment(commentId);
     })
     .catch((err) => console.log(err));

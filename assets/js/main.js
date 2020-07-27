@@ -6,3 +6,4 @@ import "./addComment";
 import "./addReply";
 import "./likeComment";
 import "./showModal";
+import "./deleteReply";

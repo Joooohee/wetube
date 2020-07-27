@@ -56,7 +56,10 @@ export const videoDetail = async (req, res) => {
       .populate("creator")
       .populate({
         path: "comments",
-        populate: [{ path: "creator" }, { path: "replies" }],
+        populate: [
+          { path: "creator" },
+          { path: "replies", populate: { path: "creator" } },
+        ],
       });
     res.render("videoDetail", { pageTitle: video.title, video, user });
   } catch (error) {
@@ -183,7 +186,6 @@ export const postDeleteComment = async (req, res) => {
 
 export const postAddReply = async (req, res) => {
   const {
-    // params: { id },
     body: { commentId: id, reply },
     user,
   } = req;
@@ -195,6 +197,14 @@ export const postAddReply = async (req, res) => {
     });
     comment.replies.push(newReply.id);
     comment.save();
+    res.json({
+      resultCode: "S",
+      resultData: {
+        name: user.name,
+        reply,
+        id: newReply.id,
+      },
+    });
   } catch (error) {
     res.status(400);
   } finally {
@@ -227,6 +237,22 @@ export const postLikeComment = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+// Delete Reply
+
+export const postDeleteReply = async (req, res) => {
+  const {
+    body: { replyId: id },
+  } = req;
+  try {
+    await Reply.findOneAndDelete({ _id: id });
+    res.status(200);
+  } catch (error) {
+    res.status(400).json({ resultCode: "E", resultData: { error } });
   } finally {
     res.end();
   }

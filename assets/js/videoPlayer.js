@@ -10,6 +10,7 @@ const totalTime = document.getElementById("totalTime");
 const volumeRnage = document.getElementById("jsVolume");
 const sliderRange = document.getElementById("jsSlider");
 const createAt = document.querySelectorAll(".jsCreateAt");
+const replyCreateAt = document.querySelectorAll(".jsReplyCreateAt");
 
 const registerView = () => {
   const videoId = window.location.href.split("/videos/")[1];
@@ -147,6 +148,9 @@ function init() {
 
   for (let i = 0; i < createAt.length; i++) {
     createAt[i].innerHTML = commonFormatDate(createAt[i].innerHTML);
+  }
+  for (let i = 0; i < replyCreateAt.length; i++) {
+    replyCreateAt[i].innerHTML = commonFormatDate(replyCreateAt[i].innerHTML);
   }
 }
 

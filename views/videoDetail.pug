@@ -45,7 +45,7 @@ block content
                 input(type="text", placeholder="공개 댓글 추가...", name="comment")
             ul.video__commnets-list#jsCommentList
                 each comment in video.comments.reverse()
-                    li(id=comment.id)
+                    li(id=comment.id).jsComment
                         img.comment-avatar(src=`http://localhost:4000/${comment.creator.avatarUrl}`)
                         .comment-list__content
                             .commnets-list__info
@@ -73,9 +73,14 @@ block content
                                             img.reply-avatar(src="http://localhost:4000/lib/images/bear.png")
                                         input(type="text", placeholder="공개 답글 추가...", name="reply")
                                     ul.bottom__reply-text
-                                        each reply in comment.replies 
-                                            li 
+                                        each reply in comment.replies.reverse()
+                                            li(id=reply.id)
                                                 span=reply.text
+                                                .reply__right
+                                                    span=reply.creator.name
+                                                    span.jsReplyCreateAt=reply.createAt
+                                                    if loggedUser && reply.creator.id === loggedUser.id
+                                                        span.jsDeleteReply X
                                  
                         
 
