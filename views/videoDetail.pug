@@ -2,6 +2,15 @@ extends layouts/main
 include mixins/videoPlayer
 
 block content
+    span.display-none#jsLoggedUser=loggedUser
+    .private-notification__modal.display-none#jsModal
+        .modal__background
+        .modal__container
+            span Sorry, It's for members!
+            p Please Join or Log in.
+            .buttons
+                a(href=routes.join) Join
+                a(href=routes.join) Log in 
     .video-detail__container
         +videoPlayer({
             src:video.fileUrl

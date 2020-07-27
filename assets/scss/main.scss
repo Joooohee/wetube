@@ -57,14 +57,24 @@ input[type="submit"] {
   position: relative;
   .private-notification__modal {
     position: absolute;
-    background: #2c2c2c48;
+    // background: #2c2c2c48;
     width: 100%;
     height: 100%;
     left: 0;
     top: 0;
     z-index: 10;
 
+    .modal__background {
+      // position: absolute;
+      background: #2c2c2c48;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+    }
+
     .modal__container {
+      z-index: 11;
       position: fixed;
       width: 350px;
       height: 150px;
@@ -90,13 +100,24 @@ input[type="submit"] {
         width: 100%;
         display: flex;
         justify-content: space-between;
-        button {
-          width: 45%;
+        a {
+          width: 40%;
+          padding: 10px;
+          background: #f3abb2;
+          text-align: center;
+          color: #ffffff;
+          font-size: 16px;
+          font-weight: 700;
+          border-radius: 5px;
         }
-        button:first-child {
+        a:first-child {
           background: #70c8d8;
         }
       }
     }
   }
+}
+
+.display-none {
+  display: none;
 }

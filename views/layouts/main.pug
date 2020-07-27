@@ -10,14 +10,13 @@ html
             main
                 block content    
             include ../partials/footer
-            //- .private-notification__modal
+            //- .private-notification__modal.display-none#jsModal
             //-     .modal__container
             //-         span Sorry, It's for members!
             //-         p Please Join or Log in.
             //-         .buttons
-            //-             button Join
-            //-             button Log in
-        
+            //-             a(href=routes.join) Join
+            //-             a(href=routes.join) Log in 
         script(src="/static/main.js")
         
 

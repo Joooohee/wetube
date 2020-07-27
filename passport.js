@@ -34,5 +34,26 @@ passport.use(
   ),
 );
 
+// passport.use(
+//   new LocalStrategy(
+//     {
+//       usernameField: "username",
+//       passwordField: "password",
+//       passReqToCallback: true,
+//     },
+//     function (req, username, password, done) {
+//       if (username === "user001" && password === "password") {
+//         console.log("test");
+//         return done(null, {
+//           user_id: username,
+//         });
+//       } else {
+//         console.log("test22");
+//         return done(false, null);
+//       }
+//     },
+//   ),
+// );
+
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());

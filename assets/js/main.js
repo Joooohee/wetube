@@ -5,3 +5,4 @@ import "./deleteComment";
 import "./addComment";
 import "./addReply";
 import "./likeComment";
+import "./showModal";

@@ -37,6 +37,21 @@ export const postLogin = passport.authenticate("local", {
   successRedirect: routes.home,
 });
 
+// export const postLogin = (req, res, next) => {
+//   passport.authenticate("local", (err, user) => {
+//     try {
+//       if (!user) {
+//         return res.redirect("/login");
+//       }
+//       req.logIn(user, () => {
+//         return res.redirect("/");
+//       });
+//     } catch (error) {
+//       return res.redirect("/login");
+//     }
+//   })(req, res, next);
+// };
+
 export const githubLogin = passport.authenticate("github");
 
 export const githubLoginCallback = async (_, __, profile, cb) => {
