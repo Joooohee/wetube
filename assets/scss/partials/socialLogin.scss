@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  color: #fff;
   button {
     width: 100%;
     max-width: 320px;
@@ -18,8 +19,12 @@
     }
   }
   .social-login--github {
-    background-color: $black;
-    color: white;
+    background: $black;
+    a {
+      text-decoration: none;
+      outline: none;
+      color: #ffffff;
+    }
   }
   .social-login--facebook {
     background-color: #3a5998;

@@ -10,7 +10,7 @@ block content
             p Please Join or Log in.
             .buttons
                 a(href=routes.join) Join
-                a(href=routes.join) Log in 
+                a(href=routes.login) Log in 
     .video-detail__container
         +videoPlayer({
             src:video.fileUrl
@@ -57,11 +57,11 @@ block content
                             .commnets-list__bottom
                                 .bottom__atc                           
                                     if loggedUser && comment.likes.indexOf(loggedUser.id) > -1
-                                        span
-                                            i.fas.fa-heart.jsLike
+                                        span.jsLike
+                                            i.fas.fa-heart
                                     else
-                                        span
-                                            i.far.fa-heart.jsLike
+                                        span.jsLike
+                                            i.far.fa-heart
                                     span.jsReplyButton 답글
                                     if loggedUser && comment.creator.id === loggedUser.id
                                         span.jsDeleteComment 삭제

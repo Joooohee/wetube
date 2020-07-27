@@ -4,7 +4,7 @@ include mixins/videoBlock
 block content
     .user-profile
         .user-profile__header
-            img.u-avatar(src=`http://localhost:4000/${user.avatarUrl}`)
+            img.user-avatar(src=`http://localhost:4000/${user.avatarUrl}`)
             h4.profile__username=user.name
         if user.id === loggedUser.id
             .user-profile__btns 
@@ -12,11 +12,13 @@ block content
                     button Edit Profile
                 a(href=`/users${routes.changePassword}`)
                     button Change Password
-        .home-videos
+        div.user-video__list 
+            span 동영상 리스트
+        .user-videos
             each item in user.videos
                 +videoBlock({
                     id:item.id,
                     title:item.title,
                     views:item.views,
-                    videoFile:item.fileUrl
+                    videoFile:`http://localhost:4000/${item.fileUrl}`
                 })

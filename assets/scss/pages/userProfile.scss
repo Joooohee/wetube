@@ -1,16 +1,19 @@
 .user-profile {
   width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
   .user-profile__header {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 18px;
+    .user-avatar {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+    }
     .profile__username {
-      font-size: 18px;
+      font-size: 25px;
       margin-top: 15px;
+      font-weight: 700;
     }
   }
   .user-profile__btns {
@@ -20,5 +23,21 @@
     a:not(:last-child) {
       margin-bottom: 20px;
     }
+  }
+  .user-video__list {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    border-top: 1px solid $dark-grey;
+    padding-top: 20px;
+  }
+}
+
+.user-videos {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(150px, 1fr));
+  grid-gap: 30px;
+  .videoBlock {
+    grid-column: span 2;
   }
 }

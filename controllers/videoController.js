@@ -217,8 +217,13 @@ export const postLikeComment = async (req, res) => {
     } else {
       comment.likes.push(user.id);
     }
-
     comment.save();
+    res.json({
+      resultCode: "S",
+      resultData: {
+        likeCheck: targetIndex > -1 ? "N" : "Y",
+      },
+    });
   } catch (error) {
     console.log(error);
     res.status(400);
