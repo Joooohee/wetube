@@ -20,7 +20,7 @@ main {
 
 button,
 // input:not([type="file"]),
-textarea,
+// textarea,
 .fileUpload {
   padding: 7px 10px;
   width: 100%;
@@ -38,6 +38,21 @@ textarea,
   }
 }
 
+textarea {
+  padding: 7px 10px;
+  width: 100%;
+  box-shadow: none;
+  border: 1px solid #d3d3d3;
+  overflow: auto;
+  outline: none;
+  box-shadow: none !important;
+  resize: none;
+}
+
+textarea:focus {
+  border: 1px solid #f3abb2;
+}
+
 button {
   border: none;
   background-color: #f3abb2;
@@ -45,7 +60,11 @@ button {
 }
 
 button.delete {
-  background-color: $dark-red;
+  border: none;
+  background-color: #ff5768;
+  color: white;
+  border-radius: 0;
+  font-weight: 400;
 }
 
 button,

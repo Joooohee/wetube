@@ -71,11 +71,10 @@ export const getEditVideo = async (req, res) => {
   } = req;
   try {
     const video = await Video.findById(id);
-    console.log(video.creator, req.user.id);
-    if (video.creator !== req.user.id) {
-      throw Error();
-    } else {
+    if (String(video.creator) === req.user.id) {
       res.render("editVideo", { pageTitle: `Edit ${video.title}`, video });
+    } else {
+      throw Error();
     }
   } catch (error) {
     console.log(error);
@@ -89,7 +88,8 @@ export const postEditVideo = async (req, res) => {
     body: { title, description },
   } = req;
   try {
-    await Video.findOneAndUpdate(id, { title, description });
+    console.log(id);
+    await Video.findOneAndUpdate({ _id: id }, { title, description });
     res.redirect(routes.videoDetail(id));
   } catch (error) {
     res.redirect(routes.home);
