@@ -39,7 +39,8 @@ const addComment = (avatarUrl, comment, name, id) => {
   spanCreateAt.className = "jsCreateAt";
 
   spanText.innerHTML = comment;
-  spanIcon.innerHTML = "<i class='fas fa-heart'></>";
+  spanIcon.innerHTML = "<i class='far fa-heart'></>";
+  spanIcon.classList.add("jsLike");
   spanTextReply.innerHTML = "답글";
   spanTextReply.addEventListener("click", showReply);
   spanTextDelete.innerHTML = "삭제";
