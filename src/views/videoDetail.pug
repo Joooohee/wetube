@@ -39,14 +39,14 @@ block content
                     span#jsCommentNumber=video.comments.length + "개"
             form.add__comment#jsAddComment
                 if user
-                    img.comment-avatar(src=`http://localhost:4000/${user.avatarUrl}`)
+                    img.comment-avatar(src=`https://devcenter.heroku.com/${user.avatarUrl}`)
                 else
-                    img.comment-avatar(src="http://localhost:4000/lib/images/bear.png")
+                    img.comment-avatar(src="https://devcenter.heroku.com/lib/images/bear.png")
                 input(type="text", placeholder="공개 댓글 추가...", name="comment")
             ul.video__commnets-list#jsCommentList
                 each comment in video.comments.reverse()
                     li(id=comment.id).jsComment
-                        img.comment-avatar(src=`http://localhost:4000/${comment.creator.avatarUrl}`)
+                        img.comment-avatar(src=`https://devcenter.heroku.com/${comment.creator.avatarUrl}`)
                         .comment-list__content
                             .commnets-list__info
                                 span=comment.creator.name 
@@ -68,9 +68,9 @@ block content
                                 .bottom__reply.display-none
                                     form.bottom__reply-form.jsAddReply
                                         if user
-                                            img.reply-avatar(src=`http://localhost:4000/${user.avatarUrl}`)
+                                            img.reply-avatar(src=`https://devcenter.heroku.com/${user.avatarUrl}`)
                                         else
-                                            img.reply-avatar(src="http://localhost:4000/lib/images/bear.png")
+                                            img.reply-avatar(src="https://devcenter.heroku.com/lib/images/bear.png")
                                         input(type="text", placeholder="공개 답글 추가...", name="reply")
                                     ul.bottom__reply-text
                                         each reply in comment.replies.reverse()
