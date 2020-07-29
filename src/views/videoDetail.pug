@@ -41,7 +41,7 @@ block content
                 if user
                     img.comment-avatar(src=`${user.avatarUrl}`)
                 else
-                    img.comment-avatar(src="http://localhost:4000/lib/images/bear.png")
+                    img.comment-avatar(src="/lib/images/bear.png")
                 input(type="text", placeholder="공개 댓글 추가...", name="comment")
             ul.video__commnets-list#jsCommentList
                 each comment in video.comments.reverse()
@@ -70,7 +70,7 @@ block content
                                         if user.avatarUrl
                                             img.reply-avatar(src=`${user.avatarUrl}`)
                                         else
-                                            img.reply-avatar(src="http://localhost:4000/lib/images/bear.png")
+                                            img.reply-avatar(src="/lib/images/bear.png")
                                         input(type="text", placeholder="공개 답글 추가...", name="reply")
                                     ul.bottom__reply-text
                                         each reply in comment.replies.reverse()
