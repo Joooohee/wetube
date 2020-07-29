@@ -1,27 +1,15 @@
 # WeTube
 
-Cloning Youtube with Vanilla and NodeJS
+WeTube는 실서비스인 유튜브를 클론한 프로젝트입니다.<br>
+로그인/소셜로그인, 로그아웃, 유저프로필, 동영상 업로드, 녹화 및 다운로드, 댓글, 좋아요 등의 기능이 있습니다.<br><br>
+:star:아래 데모 사이트 주소로 직접 확인해보세요:star:<br>
+Demo: https://limitless-reef-00215.herokuapp.com/
 
-## Pages:
+![ex_screenshot](./images/screenshot.png)
 
-- [ ] Home
-- [x] Join
-- [x] Login
-- [x] Search
-- [ ] User Detail
-- [ ] Edit Profile
-- [ ] Change Password
-- [ ] Upload
-- [ ] Video Dtail
-- [ ] Edit Video
+## 사용한 기술
 
-## Commit message rule
+---
 
-- [FIX] 올바르지 않은 동작을 고친 경우
-- [ADD] 코드나 테스트, 예제, 문서 등의 추가
-- [UPDATE] 개정이나 버전 업데이트가 있을 때 사용
-- [CORRECT] 문법의 오류나 타입의 변경, 이름 변경 등에 사용
-- [REMOVE] 코드의 삭제가 있을 때 사용
-- [REFACTOR] 전면 수정이 있을 때 사용
-- [SIMPLIFY] 복잡한 코드를 단순화 할 때 사용
-- [IMPROVE] 호환성, 테스트 커버리지, 성능, 검증 기능, 접근성 등 향상이 있을 때 사용
+기술 및 프레임워크 : NodeJS, ExpressJS, MongoDB<br>
+배포환경 : Heroku, AWS S3, MongoDB Atlas
