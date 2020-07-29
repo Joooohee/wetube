@@ -133,14 +133,13 @@ function handleSliderDrag(event) {
   const {
     target: { value },
   } = event;
-  console.log(value);
   videoPlayer.currentTime = value;
   currentTime.innerHTML = formatDate(Math.floor(videoPlayer.currentTime));
 }
 
 function init() {
   videoPlayer.volume = 0.5;
-
+  setTotalTime();
   playBtn.addEventListener("click", handlePlayClick);
   volumeBtn.addEventListener("click", handleVolumeClick);
   fullScrnBtn.addEventListener("click", goFullScreen);
@@ -148,8 +147,6 @@ function init() {
   videoPlayer.addEventListener("ended", handleEnded);
   volumeRnage.addEventListener("input", handleVolumDrag);
   sliderRange.addEventListener("input", handleSliderDrag);
-
-  setTotalTime();
 
   for (let i = 0; i < createAt.length; i++) {
     createAt[i].innerHTML = commonFormatDate(createAt[i].innerHTML);
