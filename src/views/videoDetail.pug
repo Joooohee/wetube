@@ -38,7 +38,7 @@ block content
                     |댓글  
                     span#jsCommentNumber=video.comments.length + "개"
             form.add__comment#jsAddComment
-                if user
+                if user && user.avatarUrl
                     img.comment-avatar(src=`${user.avatarUrl}`)
                 else
                     img.comment-avatar(src="/lib/images/bear.png")
@@ -46,7 +46,10 @@ block content
             ul.video__commnets-list#jsCommentList
                 each comment in video.comments.reverse()
                     li(id=comment.id).jsComment
-                        img.comment-avatar(src=`${comment.creator.avatarUrl}`)
+                        if comment.creator.avatarUrl
+                            img.comment-avatar(src=`${comment.creator.avatarUrl}`)
+                        else
+                            img.comment-avatar(src="/lib/images/bear.png")
                         .comment-list__content
                             .commnets-list__info
                                 span=comment.creator.name 
@@ -67,7 +70,7 @@ block content
                                         span.jsDeleteComment 삭제
                                 .bottom__reply.display-none
                                     form.bottom__reply-form.jsAddReply
-                                        if user.avatarUrl
+                                        if user && user.avatarUrl
                                             img.reply-avatar(src=`${user.avatarUrl}`)
                                         else
                                             img.reply-avatar(src="/lib/images/bear.png")
