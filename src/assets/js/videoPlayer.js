@@ -144,10 +144,12 @@ function init() {
   playBtn.addEventListener("click", handlePlayClick);
   volumeBtn.addEventListener("click", handleVolumeClick);
   fullScrnBtn.addEventListener("click", goFullScreen);
-  videoPlayer.addEventListener("loadedmetadata", setTotalTime);
+  // videoPlayer.addEventListener("loadedmetadata", setTotalTime);
   videoPlayer.addEventListener("ended", handleEnded);
   volumeRnage.addEventListener("input", handleVolumDrag);
   sliderRange.addEventListener("input", handleSliderDrag);
+
+  setTotalTime();
 
   for (let i = 0; i < createAt.length; i++) {
     createAt[i].innerHTML = commonFormatDate(createAt[i].innerHTML);
