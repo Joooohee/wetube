@@ -102,6 +102,7 @@ function getSliderValue() {
 async function setTotalTime() {
   const blob = await fetch(videoPlayer.src).then((response) => response.blob());
   const duration = await getBlobDuration(blob);
+  console.log(duration);
   const totalTimeString = formatDate(duration);
   totalTime.innerHTML = totalTimeString;
   sliderRange.max = Math.floor(duration);
