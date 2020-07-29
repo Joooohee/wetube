@@ -1,6 +1,6 @@
 mixin videoPlayer(video = {})
     .videoPlayer#jsVideoPlayer
-        video(src=`/${video.src}`) 
+        video(src=`${video.src}`) 
         .videoPlayer__controls
             .videoPlayer__slider
                 input#jsSlider(type="range", min="0", step="0.1", value="0")

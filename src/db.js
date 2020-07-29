@@ -4,8 +4,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 mongoose.connect(
-  // process.env.PRODUCTION ? process.env.MONGO_URL_PROD : process.env.MONGO_URL,
-  process.env.MONGO_URL_PROD,
+  process.env.PRODUCTION ? process.env.MONGO_URL_PROD : process.env.MONGO_URL,
+  // process.env.MONGO_URL_PROD,
   {
     useNewUrlParser: true,
     useFindAndModify: false,
@@ -15,7 +15,14 @@ mongoose.connect(
 
 const db = mongoose.connection;
 
-const handleOpen = () => console.log("✅Connected to DB");
+const handleOpen = () =>
+  console.log(
+    `✅Connected to DB ${
+      process.env.PRODUCTION
+        ? process.env.MONGO_URL_PROD
+        : process.env.MONGO_URL
+    }`,
+  );
 const handleError = (error) => console.log(`❌Error on DB connection:${error}`);
 
 db.once("open", handleOpen);

@@ -31,7 +31,7 @@ const addComment = (avatarUrl, comment, name, id) => {
   const inputReply = document.createElement("input");
   const ulReply = document.createElement("ul");
 
-  imgAvatar.src = `https://devcenter.heroku.com/${avatarUrl}`;
+  imgAvatar.src = `http://localhost:4000/${avatarUrl}`;
   imgAvatar.className = "comment-avatar";
 
   spanName.innerHTML = `${name}&nbsp;&nbsp;`;
@@ -59,7 +59,7 @@ const addComment = (avatarUrl, comment, name, id) => {
   divAtc.appendChild(spanTextReply);
   divAtc.appendChild(spanTextDelete);
 
-  replyAvatar.src = `https://devcenter.heroku.com/${avatarUrl}`;
+  replyAvatar.src = `http://localhost:4000/${avatarUrl}`;
   replyAvatar.className = "reply-avatar";
 
   inputReply.type = "text";
