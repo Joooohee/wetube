@@ -100,11 +100,11 @@ function getSliderValue() {
 }
 
 async function setTotalTime() {
-  // const blob = await fetch(videoPlayer.src).then((response) => response.blob());
-  // const duration = await getBlobDuration(blob);
-  const totalTimeString = formatDate(videoPlayer.duration);
+  const blob = await fetch(videoPlayer.src).then((response) => response.blob());
+  const duration = await getBlobDuration(blob);
+  const totalTimeString = formatDate(duration);
   totalTime.innerHTML = totalTimeString;
-  sliderRange.max = Math.floor(videoPlayer.duration);
+  sliderRange.max = Math.floor(duration);
   setInterval(getCurrentTime, 1000);
   setInterval(getSliderValue, 100);
 }
