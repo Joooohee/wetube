@@ -31,7 +31,7 @@ const addComment = (avatarUrl, comment, name, id) => {
   const inputReply = document.createElement("input");
   const ulReply = document.createElement("ul");
 
-  imgAvatar.src = avatarUrl;
+  imgAvatar.src = avatarUrl || "/lib/images/bear.png";
   imgAvatar.className = "comment-avatar";
 
   spanName.innerHTML = `${name}&nbsp;&nbsp;`;
@@ -59,7 +59,7 @@ const addComment = (avatarUrl, comment, name, id) => {
   divAtc.appendChild(spanTextReply);
   divAtc.appendChild(spanTextDelete);
 
-  replyAvatar.src = avatarUrl;
+  replyAvatar.src = avatarUrl || "/lib/images/bear.png";
   replyAvatar.className = "reply-avatar";
 
   inputReply.type = "text";
